@@ -1,4 +1,3 @@
-// author.controller.ts
 import { Controller, Get, Post, Body, Param, Delete, Put, Res, HttpStatus } from '@nestjs/common';
 import { AuthorService } from './author.service';
 import { CreateAuthorDto } from './dto/create-author.dto';
@@ -62,7 +61,7 @@ export class AuthorController {
         });
       }
       return res.status(HttpStatus.OK).json(author);
-    } catch (error) {// Log the error
+    } catch (error) {
       return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: 'Autor não encontrado',
         error: error.message,
@@ -98,7 +97,9 @@ export class AuthorController {
           message: 'Autor não encontrado!',
         });
       }
-      return res.status(HttpStatus.NO_CONTENT).send();
+      return res.status(HttpStatus.OK).json({
+        message: 'Autor excluido com sucesso!',
+      });
     } catch (error) {
       console.error('Erro ao deletar autor:', error);  
       return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
