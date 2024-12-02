@@ -8,8 +8,8 @@ export class Book {
 
 
 
-    @PrimaryGeneratedColumn()
-    id:number;
+    @PrimaryGeneratedColumn("uuid")
+    id:UUID;
 
 
     @Column()
