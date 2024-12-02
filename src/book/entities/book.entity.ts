@@ -1,7 +1,9 @@
 import { Author } from "src/author/entities/author.entity";
-import { Column, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { UUID } from "typeorm/driver/mongodb/bson.typings";
 
+
+@Entity()
 export class Book {
 
 
