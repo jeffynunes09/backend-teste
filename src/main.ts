@@ -5,7 +5,8 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Configuração do Swagger
+  app.enableCors()
+
   const config = new DocumentBuilder()
     .setTitle('Biblioteca API')
     .setDescription('API para gerenciamento de autores e livros')
