@@ -1,21 +1,24 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { Author } from "src/author/entities/author.entity";
-import { Column, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { UUID } from "typeorm/driver/mongodb/bson.typings";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
+
+@Entity("Book")
 export class Book {
 
-
-
-    @PrimaryGeneratedColumn()
-    id:number;
-
+    @PrimaryGeneratedColumn("uuid")
+    @ApiProperty({ description: 'ID único do livro', readOnly: true })
+    id: string;  
 
     @Column()
-    title:string;
+    @ApiProperty({ description: 'Título do livro' })
+    title: string;
 
     @Column()
-    publicationDate:Date;
+    @ApiProperty({ description: 'Data de publicação do livro' })
+    publicationDate: Date;
 
-    @ManyToOne(() => Author, (author) =>  author.books )
-    author:Author;
+    @ManyToOne(() => Author, (author) => author.books)
+    @ApiProperty({ description: 'Autor do livro', type: () => Author })
+    author: Author;
 }
